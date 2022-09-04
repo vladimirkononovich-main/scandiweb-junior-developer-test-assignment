@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Forum&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+.backdrop {
+  background: rgba(57, 55, 72, 0.22);
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.drop-down-cart {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 80px;
+  right: 8%;
+  background: #ffffff;
+  min-width: 325px;
+  padding: 32px 16px;
+  box-sizing: border-box;
+}
+.drop-down-cart__title-wrapper {
+  display: flex;
+}
+.drop-down-cart__title,
+.drop-down-cart__items-counter,
+.drop-down-cart__total-counter {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 160%;
+  font-weight: 700;
+  margin: 0;
+}
+.drop-down-cart__empty-title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  color: #cccccc;
+}
+.drop-down-cart__items-counter {
+  font-weight: 500;
+}
+.drop-down-cart__products {
+  display: flex;
+  flex-direction: column;
+  max-height: 420px;
+  overflow-y: auto;
+  margin: 32px 0 32px 0;
+}
+.drop-down-cart__products::-webkit-scrollbar {
+  width: 8px;
+}
+.drop-down-cart__products::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+.drop-down-cart__products::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border-radius: 22px;
+  border: 2px solid #ffffff;
+}
+.drop-down-cart__total-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  margin: 0 0 32px 0;
+}
+.drop-down-cart__buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 43px;
+}
+.drop-down-cart__checkout-button,
+.drop-down-cart__view-bag-button {
+  width: 140px;
+  height: 43px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}
+.drop-down-cart__checkout-button:active,
+.drop-down-cart__view-bag-button:active {
+  opacity: 0.8;
+}
+.drop-down-cart__view-bag-button {
+  border: 1px solid #1d1f22;
+  color: #1d1f22;
+  background: white;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120%;
+}
+.drop-down-cart__checkout-button {
+  background: #5ece7b;
+  color: #ffffff;
+}
+.drop-down-cart__product-name {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.drop-down-cart__product-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.drop-down-cart__product-wrapper:last-child {
+  margin-bottom: 0;
+}
+.drop-down-cart-switcher {
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 30px;
+  position: relative;
+}
+.drop-down-cart-switcher__btn {
+  width: 25px;
+  border: none;
+  background-color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  height: 25px;
+  background-image: url(../../assets/drop-down-cart-logo.svg);
+}
+.drop-down-cart-switcher__counter {
+  position: absolute;
+  top: 22px;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background: #1d1f22;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  border-radius: 60px;
+}

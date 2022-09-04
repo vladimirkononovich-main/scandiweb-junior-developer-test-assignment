@@ -1,0 +1,81 @@
+.product-attr-title {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  color: #1d1f22;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.product-attr-title_type_condensed {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: capitalize;
+}
+.product-attr__btn-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.product-attr__btn-wrapper:last-child {
+  margin-bottom: 0;
+}
+.product-attr__btn_type_text {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #1d1f22;
+  outline: 1px solid #1d1f22;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 63px;
+  height: 45px;
+}
+.product-attr__btn_type_swatch {
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 1px rgb(221, 226, 223) inset;
+  min-width: 32px;
+  height: 32px;
+}
+.product-attr__btn_type_text,
+.product-attr__btn_type_swatch {
+  margin-right: 12px;
+}
+.product-attr__btn_type_text:last-child,
+.product-attr__btn_type_swatch:last-child {
+  margin-right: 0;
+}
+.product-attr__btn_type_text:first-child,
+.product-attr__btn_type_swatch:first-child {
+  margin-left: 1px;
+}
+.product-attr__btn_type_text_selected {
+  background: #1d1f22;
+  color: #ffffff;
+}
+.product-attr__btn_type_swatch_selected {
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 1),
+    0px 0px 0px 2px rgba(94, 206, 123, 1),
+    0px 0px 0px 1px rgb(221, 226, 223) inset;
+}
+.product-attr__btn-wrapper_type_condensed {
+  margin-bottom: 8px;
+}
+.product-attr__btn_type_swatch_condensed {
+  min-width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+.product-attr__btn_type_text_condensed {
+  min-width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}

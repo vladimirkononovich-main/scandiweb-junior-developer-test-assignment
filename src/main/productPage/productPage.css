@@ -1,0 +1,118 @@
+.product {
+  display: flex;
+  flex-basis: 1239px;
+  box-sizing: border-box;
+  padding-top: 80px;
+}
+.product-slider {
+  max-height: 511px;
+  margin-right: 34px;
+  min-width: 86px;
+  overflow-y: auto;
+}
+.product-slider::-webkit-scrollbar {
+  width: 5px;
+}
+
+.product-slider::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+.product-slider::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border-radius: 22px;
+  border: 0px solid #2b2727;
+}
+.product-slider__gallery {
+  margin-bottom: 40px;
+  width: 79px;
+  height: 80px;
+  cursor: pointer;
+}
+.product-slider__gallery:last-child {
+  margin-bottom: 0;
+}
+.product__gallery {
+  margin-right: 102px;
+  padding-top: 41.25%;
+  flex-basis: 610px;
+  height: 511px;
+}
+.product-info {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 292px;
+}
+.product-info__brand-name {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 27px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.product-info__name {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 27px;
+  margin: 0;
+  margin-bottom: 43px;
+}
+.product-info__add-to-cart-btn {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  color: #ffffff;
+  background: #5ece7b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  flex-basis: 292px;
+  height: 52px;
+  max-height: 52px;
+  cursor: pointer;
+  border: none;
+  margin-top: 35px;
+  margin-bottom: 40px;
+}
+.product-info__add-to-cart-btn:active {
+  opacity: 0.7;
+}
+.product_type_out-of-stock {
+  opacity: 0.6;
+  cursor: default;
+}
+.product_type_out-of-stock:active {
+  opacity: 0.6;
+}
+.product-info__attributes {
+  margin-bottom: 24px;
+}
+.product-info__attributes:last-child {
+  margin-bottom: 0px;
+}
+.product-info__price-title {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  margin: 0;
+  margin-top: 38px;
+  margin-bottom: 23px;
+  text-transform: uppercase;
+}
+.product-info__description {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 292px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 159.96%;
+  color: #1d1f22;
+}

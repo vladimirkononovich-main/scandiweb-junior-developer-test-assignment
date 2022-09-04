@@ -1,0 +1,96 @@
+.category {
+  flex-basis: 1238px;
+  max-width: 1238px;
+}
+.category__title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 42px;
+  color: #1d1f22;
+  line-height: 160%;
+  margin: 80px 0 103px 0;
+}
+.category__products {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  flex-basis: 386px;
+  padding: 16px;
+  margin-bottom: 103px;
+  text-decoration: none;
+  cursor: default;
+}
+.product-card_type_out-of-stock {
+  opacity: 0.6;
+}
+
+.product-card_type_out-of-stock::before {
+  position: absolute;
+  top: 163px;
+  right: 25%;
+  z-index: 1;
+  content: "OUT OF STOCK";
+  font-family: "Raleway";
+  font-style: normal;
+  color: #8d8f9a;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 160%;
+  width: 173px;
+  height: 39px;
+}
+.product-card:hover {
+  box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.26);
+}
+.product-card_type_out-of-stock:hover {
+  box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.418);
+}
+.product-card:hover .product-card__add-to-cart-btn {
+  display: block;
+}
+.product-card_type_out-of-stock:hover .product-card__add-to-cart-btn {
+  display: none;
+}
+.product-card__name {
+  font-size: 18px;
+  line-height: 160%;
+  font-weight: 300;
+  max-width: 354px;
+  overflow-wrap: break-word;
+  margin: 0;
+}
+.product-card__price {
+  max-width: 354px;
+}
+.product-card__add-to-cart-btn {
+  display: none;
+  position: absolute;
+  top: 317px;
+  right: 8%;
+  z-index: 1;
+  background: #5ece7b;
+  border-radius: 50%;
+  background-image: url(../../assets/add-to-cart-logo.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  width: 52px;
+  height: 52px;
+}
+.product-card__gallery {
+  margin-bottom: 24px;
+  max-height: 330px;
+  flex-basis: 354px;
+  max-width: 354px;
+}

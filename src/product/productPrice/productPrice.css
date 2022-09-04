@@ -1,0 +1,19 @@
+.product-price-title {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  color: #1d1f22;
+  text-transform: uppercase;
+  margin: 0;
+}
+.product-price {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #1d1f22;
+  overflow-wrap: break-word;
+  margin: 0;
+}
