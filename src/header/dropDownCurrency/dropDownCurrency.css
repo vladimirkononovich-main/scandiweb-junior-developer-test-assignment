@@ -39,6 +39,9 @@
   font-weight: 500;
   font-size: 18px;
 }
+.drop-down-currency-switcher__title {
+  cursor: pointer;
+}
 .drop-down-currency-switcher__btn {
   width: 10px;
   height: 10px;

@@ -17,7 +17,12 @@ class DropDownCurrency extends React.Component {
     return (
       <>
         <div className="drop-down-currency-switcher">
-          {this.props.currentCurrencySymbol}
+          <div
+            className="drop-down-currency-switcher__title"
+            onClick={this.props.showCurrency}
+          >
+            {this.props.currentCurrencySymbol}
+          </div>
           <button
             className={classNames("drop-down-currency-switcher__btn", {
               "drop-down-currency-switcher__btn_active":
