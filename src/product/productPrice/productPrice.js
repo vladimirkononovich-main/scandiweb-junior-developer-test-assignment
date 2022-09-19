@@ -17,7 +17,7 @@ class ProductPrice extends React.Component {
       return (
         <h3 className={"product-price " + this.props.productPriceClass}>
           {currency.currency.symbol}
-          {currency.amount}
+          {((currency.amount * 100) / 100).toFixed(2)}
         </h3>
       );
     }
