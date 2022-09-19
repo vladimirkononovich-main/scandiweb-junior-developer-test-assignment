@@ -125,6 +125,7 @@
   box-sizing: border-box;
   padding-top: 30px;
   position: relative;
+  margin-left: 4px;
 }
 .drop-down-cart-switcher__btn {
   width: 25px;

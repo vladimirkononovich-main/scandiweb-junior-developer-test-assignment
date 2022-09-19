@@ -16,6 +16,9 @@
   padding-top: 8px;
   cursor: pointer;
 }
+.drop-down-currency__btn:hover  {
+  background: #eeeeee;
+}
 .drop-down-currency__btn_active {
   background: #eeeeee;
 }
@@ -31,7 +34,6 @@
 
 .drop-down-currency-switcher {
   display: flex;
-  width: 35px;
   align-items: center;
   justify-content: space-between;
   font-family: "Raleway";
@@ -48,6 +50,7 @@
   border: none;
   background-color: white;
   padding-right: 10px;
+  margin-left: 5px;
   cursor: pointer;
 }
 .drop-down-currency-switcher__btn::before,
