@@ -83,12 +83,7 @@ class ProductInRow extends React.Component {
         <ProductGallery
           productGallery={this.props.product.gallery}
           currentImgIndex={this.state.currentImgIndex}
-          className={classNames("product-in-row__gallery-wrapper", {
-            "product-in-row__gallery-wrapper_type_condensed":
-              type === "condensed",
-          })}
           size={type}
-          type={type}
           showSlider={this.props.showSlider}
         />
       </div>

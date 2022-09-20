@@ -1,10 +1,5 @@
-.gallery {
-  display: flex;
-  align-items: center;
-  position: relative;
-  box-sizing: border-box;
-}
 .gallery_size_uncondensed {
+  position: relative;
   min-width: 200px;
   max-width: 200px;
   height: 288px;
@@ -14,12 +9,9 @@
   height: 190px;
 }
 .gallery__current-img {
-  position: absolute;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .gallery__button-slider {
   position: absolute;

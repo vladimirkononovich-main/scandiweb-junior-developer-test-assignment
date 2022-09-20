@@ -73,7 +73,7 @@ class ProductPage extends React.Component {
         <div className="product-slider">
           {this.props.product.gallery.map((img, index) => {
             return (
-              <div className="gallery product-slider__gallery" key={index}>
+              <div className="product-slider__gallery" key={index}>
                 <img
                   key={index}
                   className="gallery__current-img"
@@ -84,7 +84,7 @@ class ProductPage extends React.Component {
             );
           })}
         </div>
-        <div className="gallery product__gallery">
+        <div className="product__gallery">
           <img
             className="gallery__current-img"
             src={this.props.product.gallery[this.state.currentImgIndex]}

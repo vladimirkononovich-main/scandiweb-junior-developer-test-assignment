@@ -38,7 +38,7 @@ class ProductGallery extends React.Component {
 
     return (
       <div
-        className={classNames("gallery", this.props.className, {
+        className={classNames(this.props.className, {
           gallery_size_condensed: size === "condensed",
           gallery_size_uncondensed: size === "uncondensed",
         })}
