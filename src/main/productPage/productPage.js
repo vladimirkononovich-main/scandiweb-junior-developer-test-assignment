@@ -84,7 +84,11 @@ class ProductPage extends React.Component {
             );
           })}
         </div>
-        <div className="product__gallery">
+        <div
+          className={classNames("product__gallery", {
+            "product__gallery_out-of-stock": !this.props.product.inStock,
+          })}
+        >
           <img
             className="gallery__current-img"
             src={this.props.product.gallery[this.state.currentImgIndex]}

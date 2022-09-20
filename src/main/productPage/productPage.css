@@ -31,9 +31,25 @@
   margin-bottom: 0;
 }
 .product__gallery {
+  position: relative;
   margin-right: 102px;
   flex-basis: 610px;
   height: 511px;
+}
+.product__gallery_out-of-stock {
+  opacity: 0.6;
+}
+.product__gallery_out-of-stock::before {
+  position: absolute;
+  content: "out of stock";
+  top: 40%;
+  right: 35%;
+  text-transform: uppercase;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #8d8f9a;
 }
 .product-info {
   display: flex;
