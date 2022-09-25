@@ -5,10 +5,6 @@ import { toggleCurrency } from "../../redux/actions";
 import "./dropDownCurrency.css";
 
 class DropDownCurrency extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     if (this.props.isLoading) {
       return <div>Loading...</div>;

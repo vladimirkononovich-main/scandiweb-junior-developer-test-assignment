@@ -107,14 +107,13 @@ export const dataReducer = (state = initState, action) => {
         cartItemsQuantity: state.cartItemsQuantity + 1,
       };
     }
-
     case CHANGE_PRODUCT_QUANTITY: {
       const cartItems = state.cartItems.map((item) => {
         const isSameAttrs = compareSelectedAttrs(
           item.selectedAttributes,
           action.payload.selectedAttributes
         );
-        if (item.product.id == action.payload.productId && isSameAttrs) {
+        if (item.product.id === action.payload.productId && isSameAttrs) {
           return {
             ...item,
             quantity: item.quantity + action.payload.count,
@@ -130,14 +129,13 @@ export const dataReducer = (state = initState, action) => {
         cartItemsQuantity: state.cartItemsQuantity + action.payload.count,
       };
     }
-
     case REMOVE_PRODUCT: {
       const cartItems = state.cartItems.filter((item) => {
         const isSameAttrs = compareSelectedAttrs(
           item.selectedAttributes,
           action.payload.selectedAttributes
         );
-        if (item.product.id == action.payload.productId && isSameAttrs) {
+        if (item.product.id === action.payload.productId && isSameAttrs) {
           return false;
         }
         return true;

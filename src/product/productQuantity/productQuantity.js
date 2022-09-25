@@ -9,10 +9,6 @@ import classNames from "classnames";
 import "./productQuantity.css";
 
 class ProductQuantity extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const type = this.props.type;
     const productId = this.props.item.product.id;

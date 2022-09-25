@@ -3,10 +3,6 @@ import "./productAttributes.css";
 import classNames from "classnames";
 
 class ProductAttributes extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     if (this.props.selectedAttributes === undefined) {
       return <div>Loading...</div>;
@@ -74,4 +70,5 @@ class ProductAttributes extends React.Component {
     );
   }
 }
+
 export default ProductAttributes;

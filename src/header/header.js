@@ -25,7 +25,7 @@ class Header extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState == this.state) return;
+    if (prevState === this.state) return;
 
     if (!this.state.isCurrencySwitcherVisible || !this.state.isBagVisible) {
       document.body.removeEventListener("click", this.hideSwitchers);

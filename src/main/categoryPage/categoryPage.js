@@ -25,6 +25,7 @@ class CategoryPage extends React.Component {
       }
     }
   }
+
   componentDidUpdate(prevProps) {
     if (
       this.props.categoryId !== prevProps.categoryId ||
@@ -37,6 +38,7 @@ class CategoryPage extends React.Component {
       }
     }
   }
+
   addProductToCartHandler(event, product) {
     event.preventDefault();
     const selectedAttributes = product.attributes.map((attr) => {
@@ -100,6 +102,7 @@ const mapDispathToProps = {
   addProductToCart: addProductToCart,
   loadClothingStoreCategory: loadClothingStoreCategory,
 };
+
 const mapStateToProps = (state) => {
   const pathName = state.router.location.pathname;
   const categoryId = pathName.split("/")[2];
@@ -112,4 +115,5 @@ const mapStateToProps = (state) => {
 
   return { pathName, products, categoryId, categories };
 };
+
 export default connect(mapStateToProps, mapDispathToProps)(CategoryPage);

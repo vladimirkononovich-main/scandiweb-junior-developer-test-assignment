@@ -26,7 +26,7 @@ class ProductPage extends React.Component {
     this.props.loadClothingStoreProduct(this.props.productId);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.productId !== prevProps.productId) {
       this.setState({
         selectedAttributes: [],
@@ -89,6 +89,7 @@ class ProductPage extends React.Component {
                   className="gallery__current-img"
                   src={this.props.product.gallery[index]}
                   onClick={() => this.changeCurrentImgHandler(index)}
+                  alt="not found"
                 />
               </div>
             );
@@ -102,6 +103,7 @@ class ProductPage extends React.Component {
           <img
             className="gallery__current-img"
             src={this.props.product.gallery[this.state.currentImgIndex]}
+            alt="not found"
           />
         </div>
         <div className="product-info">

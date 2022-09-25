@@ -15,7 +15,7 @@
 }
 .header__filters {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-basis: 341px;
 }
 .header__filter-btn {
@@ -43,7 +43,7 @@
 .header__menu {
   position: relative;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-basis: 690px;
   box-sizing: border-box;
   padding-right: 5.5%;

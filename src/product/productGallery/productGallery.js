@@ -46,6 +46,7 @@ class ProductGallery extends React.Component {
         <img
           className="gallery__current-img"
           src={this.props.productGallery[this.state.currentImgIndex]}
+          alt="not found"
         />
         {this.props.showSlider && this.props.productGallery.length > 1 ? (
           <>
@@ -63,4 +64,5 @@ class ProductGallery extends React.Component {
     );
   }
 }
+
 export default ProductGallery;

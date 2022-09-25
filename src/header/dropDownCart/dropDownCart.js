@@ -5,10 +5,6 @@ import ProductInRow from "../../product/productInRow/productInRow";
 import "./dropDownCart.css";
 
 class DropDownCart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     if (!this.props.cartItems.length) {
       return (

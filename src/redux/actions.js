@@ -6,7 +6,6 @@ import {
 } from "../query/clothing-store-data";
 import {
   ADD_PRODUCT_TO_CART,
-  CATEGORIES_LOADED,
   CATEGORY_LOADED,
   CATEGORY_NAMES_AND_CURRENCIES_LOADED,
   CHANGE_PRODUCT_QUANTITY,

@@ -4,10 +4,6 @@ import ProductInRow from "../../product/productInRow/productInRow";
 import "./cartPage.css";
 
 class CartPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     if (this.props.cartItems === undefined) {
       return <div>Loading...</div>;
