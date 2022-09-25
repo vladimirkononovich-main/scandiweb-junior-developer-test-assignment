@@ -2,11 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import ProductAttributes from "../../product/productAttributes/productAttributes";
 import ProductPrice from "../../product/productPrice/productPrice";
-import { addProductToCart } from "../../redux/actions";
+import {
+  addProductToCart,
+  loadClothingStoreProduct,
+} from "../../redux/actions";
 import classNames from "classnames";
 import { Interweave } from "interweave";
 import "./productPage.css";
-import { Action } from "history";
 
 class ProductPage extends React.Component {
   constructor(props) {
@@ -21,18 +23,27 @@ class ProductPage extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      selectedAttributes: this.props.selectedAttributes,
-    });
+    this.props.loadClothingStoreProduct(this.props.productId);
   }
 
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.selectedAttributes !== this.props.selectedAttributes &&
-      !this.state.selectedAttributes
-    ) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.productId !== prevProps.productId) {
       this.setState({
-        selectedAttributes: this.props.selectedAttributes,
+        selectedAttributes: [],
+      });
+      this.props.loadClothingStoreProduct(this.props.productId);
+    }
+
+    if (prevProps.productIsLoading && !this.props.productIsLoading) {
+      const selectedAttributes = this.props.productAttributes.map((attr) => {
+        return {
+          attrId: attr.id,
+          itemId: attr.items[0].id,
+        };
+      });
+
+      this.setState({
+        selectedAttributes: selectedAttributes,
       });
     }
   }
@@ -64,10 +75,9 @@ class ProductPage extends React.Component {
   }
 
   render() {
-    if (this.props.categoryIsLoading || this.props.productIsLoading) {
+    if (this.props.productIsLoading) {
       return <div>Loading...</div>;
     }
-
     return (
       <section className="product">
         <div className="product-slider">
@@ -129,41 +139,29 @@ class ProductPage extends React.Component {
     );
   }
 }
+
 const mapDispathToProps = {
   addProductToCart: addProductToCart,
+  loadClothingStoreProduct: loadClothingStoreProduct,
 };
-const mapStateToProps = (state) => {
-  const categoryIsLoading = state.clothingStoreData.category === null;
 
+const mapStateToProps = (state) => {
   const productId = state.router.location.pathname.split("/")[3];
-  if (categoryIsLoading || productId === undefined)
-    return { categoryIsLoading };
-  const product = state.clothingStoreData.category.products.find((product) => {
-    return product.id === productId;
-  });
-  const productIsLoading = product === undefined;
-  if (product === undefined) return { categoryIsLoading, productIsLoading };
+  const product = state.clothingStoreData.product;
+  const productIsLoading = product === null;
+
+  if (productIsLoading) return { productIsLoading, productId };
 
   const productGallery = product.gallery;
   const productAttributes = product.attributes;
-  const selectedAttributes = productAttributes.map((attr) => {
-    return {
-      attrId: attr.id,
-      itemId: attr.items[0].id,
-    };
-  });
-
-  const cartItems = state.clothingStoreData.cartItems;
 
   return {
     productGallery,
-    categoryIsLoading,
     productIsLoading,
     product,
     productAttributes,
-    selectedAttributes,
     productId,
-    cartItems,
   };
 };
+
 export default connect(mapStateToProps, mapDispathToProps)(ProductPage);

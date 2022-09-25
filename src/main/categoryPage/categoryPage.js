@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { addProductToCart } from "../../redux/actions";
+import {
+  addProductToCart,
+  loadClothingStoreCategory,
+} from "../../redux/actions";
 import ProductGallery from "../../product/productGallery/productGallery";
 import ProductPrice from "../../product/productPrice/productPrice";
 import classNames from "classnames";
@@ -13,6 +16,27 @@ class CategoryPage extends React.Component {
     this.addProductToCartHandler = this.addProductToCartHandler.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.categories) {
+      const categories = this.props.categories.map((c) => c.name);
+
+      if (categories.includes(this.props.categoryId)) {
+        this.props.loadClothingStoreCategory(this.props.categoryId);
+      }
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.categoryId !== prevProps.categoryId ||
+      this.props.categories !== prevProps.categories
+    ) {
+      const categories = this.props.categories.map((c) => c.name);
+
+      if (categories.includes(this.props.categoryId)) {
+        this.props.loadClothingStoreCategory(this.props.categoryId);
+      }
+    }
+  }
   addProductToCartHandler(event, product) {
     event.preventDefault();
     const selectedAttributes = product.attributes.map((attr) => {
@@ -30,6 +54,9 @@ class CategoryPage extends React.Component {
   }
 
   render() {
+    if (!this.props.products) {
+      return <div>Loading...</div>;
+    }
     return (
       <section className="category">
         <h2 className="category__title">{this.props.categoryId}</h2>
@@ -71,12 +98,18 @@ class CategoryPage extends React.Component {
 
 const mapDispathToProps = {
   addProductToCart: addProductToCart,
+  loadClothingStoreCategory: loadClothingStoreCategory,
 };
 const mapStateToProps = (state) => {
   const pathName = state.router.location.pathname;
   const categoryId = pathName.split("/")[2];
+  const categories = state.clothingStoreData.categories;
+
+  if (!state.clothingStoreData.category)
+    return { categoryId, pathName, categories };
+
   const products = state.clothingStoreData.category.products;
 
-  return { pathName, products, categoryId };
+  return { pathName, products, categoryId, categories };
 };
 export default connect(mapStateToProps, mapDispathToProps)(CategoryPage);

@@ -1,14 +1,19 @@
 import {
   ADD_PRODUCT_TO_CART,
+  CATEGORY_LOADED,
+  CATEGORY_NAMES_AND_CURRENCIES_LOADED,
   CHANGE_PRODUCT_QUANTITY,
-  CLOTHING_STORE_DATA_LOADED,
+  PRODUCT_BEGIN_LOADING,
+  PRODUCT_LOADED,
   REMOVE_PRODUCT,
   TOGGLE_CURRENCY,
 } from "./types";
 
 const initState = {
   category: null,
+  categories: null,
   currencies: null,
+  product: null,
   currentCurrency: null,
   cartItems: [],
   cartItemsQuantity: null,
@@ -44,20 +49,37 @@ function compareSelectedAttrs(attr1, attr2) {
 
 export const dataReducer = (state = initState, action) => {
   switch (action.type) {
-    case CLOTHING_STORE_DATA_LOADED:
+    case CATEGORY_NAMES_AND_CURRENCIES_LOADED: {
       return {
         ...state,
-        category: action.payload.category,
+        categories: action.payload.categories,
         currencies: action.payload.currencies,
         currentCurrency: state.currentCurrency || action.payload.currencies[0],
       };
-
+    }
+    case CATEGORY_LOADED: {
+      return {
+        ...state,
+        category: action.payload,
+      };
+    }
+    case PRODUCT_BEGIN_LOADING: {
+      return {
+        ...state,
+        product: null,
+      };
+    }
+    case PRODUCT_LOADED: {
+      return {
+        ...state,
+        product: action.payload,
+      };
+    }
     case TOGGLE_CURRENCY:
       return {
         ...state,
         currentCurrency: state.currencies[action.payload],
       };
-
     case ADD_PRODUCT_TO_CART: {
       const newItem = action.payload;
       let isSameProduct = false;

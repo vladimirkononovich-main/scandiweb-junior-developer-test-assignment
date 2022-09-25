@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./header.css";
 import classNames from "classnames";
 import DropDownCart from "./dropDownCart/dropDownCart.js";
 import DropDownCurrency from "./dropDownCurrency/dropDownCurrency.js";
+import { loadCategoryNamesAndCurrencies } from "../redux/actions";
 
 class Header extends React.Component {
   constructor(props) {
@@ -17,6 +18,10 @@ class Header extends React.Component {
       isCurrencySwitcherVisible: false,
       isBagVisible: false,
     };
+  }
+
+  componentDidMount() {
+    this.props.loadCategoryNamesAndCurrencies();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -57,36 +62,38 @@ class Header extends React.Component {
   }
 
   render() {
+    if (
+      !this.props.categories ||
+      !this.props.currencies ||
+      !this.props.currentCurrency
+    ) {
+      return <div>Loading...</div>;
+    }
+    const categoryNames = this.props.categories.map(
+      (category) => category.name
+    );
+    if (!categoryNames.includes(this.props.categoryId)) {
+      return <Navigate to={"/categories/" + categoryNames[0]} />;
+    }
     return (
       <>
         <header className="header">
           <div className="header__content">
             <div className="header__filters">
-              <Link
-                to="/categories/all"
-                className={classNames("header__filter-btn", {
-                  "header__filter-btn_active": this.props.categoryId === "all",
-                })}
-              >
-                all
-              </Link>
-              <Link
-                to="/categories/clothes"
-                className={classNames("header__filter-btn", {
-                  "header__filter-btn_active":
-                    this.props.categoryId === "clothes",
-                })}
-              >
-                clothes
-              </Link>
-              <Link
-                to="/categories/tech"
-                className={classNames("header__filter-btn", {
-                  "header__filter-btn_active": this.props.categoryId === "tech",
-                })}
-              >
-                tech
-              </Link>
+              {this.props.categories.map((category, index) => {
+                return (
+                  <Link
+                    key={index}
+                    to={"/categories/" + category.name}
+                    className={classNames("header__filter-btn", {
+                      "header__filter-btn_active":
+                        this.props.categoryId === category.name,
+                    })}
+                  >
+                    {category.name}
+                  </Link>
+                );
+              })}
             </div>
             <div className="header__logo"></div>
             <div className="header__menu">
@@ -110,11 +117,23 @@ class Header extends React.Component {
   }
 }
 
+const mapDispathToProps = {
+  loadCategoryNamesAndCurrencies: loadCategoryNamesAndCurrencies,
+};
+
 const mapStateToProps = (state) => {
   const categoryId = state.router.location.pathname.split("/")[2];
+  const categories = state.clothingStoreData.categories;
+  const currencies = state.clothingStoreData.currencies;
   const currentCurrency = state.clothingStoreData.currentCurrency;
   const cartItemsQuantity = state.clothingStoreData.cartItemsQuantity;
 
-  return { currentCurrency, cartItemsQuantity, categoryId };
+  return {
+    currentCurrency,
+    cartItemsQuantity,
+    categoryId,
+    categories,
+    currencies,
+  };
 };
-export default connect(mapStateToProps, null)(Header);
+export default connect(mapStateToProps, mapDispathToProps)(Header);

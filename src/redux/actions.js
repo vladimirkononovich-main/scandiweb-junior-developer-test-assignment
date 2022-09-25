@@ -1,29 +1,80 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { GET_CLOTHING_STORE_DATA } from "../query/clothing-store-data";
+import {
+  GET_CATEGORY_NAMES_AND_CURRENCIES,
+  GET_CLOTHING_STORE_CATEGORY,
+  GET_CLOTHING_STORE_PRODUCT,
+} from "../query/clothing-store-data";
 import {
   ADD_PRODUCT_TO_CART,
+  CATEGORIES_LOADED,
+  CATEGORY_LOADED,
+  CATEGORY_NAMES_AND_CURRENCIES_LOADED,
   CHANGE_PRODUCT_QUANTITY,
-  CLOTHING_STORE_DATA_LOADED,
+  PRODUCT_BEGIN_LOADING,
+  PRODUCT_LOADED,
   REMOVE_PRODUCT,
   TOGGLE_CURRENCY,
 } from "./types";
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT || "http://localhost:4000/graphql",
-  cache: new InMemoryCache(),
+  uri:
+    process.env.REACT_APP_GRAPHQL_ENDPOINT || "http://localhost:4000/graphql",
+  cache: new InMemoryCache({
+    typePolicies: {
+      Product: {
+        keyFields: false,
+      },
+      AttributeSet: {
+        keyFields: false,
+      },
+      Attribute: {
+        keyFields: false,
+      },
+    },
+  }),
 });
 
-export const loadClothingStoreData = (categoryId) => {
+export const loadCategoryNamesAndCurrencies = () => {
   return async (dispatсh) => {
     const data = await client.query({
-      query: GET_CLOTHING_STORE_DATA,
+      query: GET_CATEGORY_NAMES_AND_CURRENCIES,
+    });
+    dispatсh({
+      type: CATEGORY_NAMES_AND_CURRENCIES_LOADED,
+      payload: data.data,
+    });
+  };
+};
+
+export const loadClothingStoreCategory = (categoryName) => {
+  return async (dispatсh) => {
+    const category = await client.query({
+      query: GET_CLOTHING_STORE_CATEGORY,
       variables: {
-        categoryName: categoryId,
+        categoryName: categoryName,
       },
     });
     dispatсh({
-      type: CLOTHING_STORE_DATA_LOADED,
-      payload: data.data,
+      type: CATEGORY_LOADED,
+      payload: category.data.category,
+    });
+  };
+};
+
+export const loadClothingStoreProduct = (productName) => {
+  return async (dispatсh) => {
+    dispatсh({
+      type: PRODUCT_BEGIN_LOADING,
+    });
+    const product = await client.query({
+      query: GET_CLOTHING_STORE_PRODUCT,
+      variables: {
+        productName: productName,
+      },
+    });
+    dispatсh({
+      type: PRODUCT_LOADED,
+      payload: product.data.product,
     });
   };
 };
